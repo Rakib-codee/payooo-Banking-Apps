@@ -19,7 +19,7 @@
             </div>
         </div>
         <div>
-            <button class="btn text-[#08080880] rounded-lg"><i class="fa-solid fa-arrow-right-from-bracket -rotate-180 text-gray-600 "></i> Log Out</button>
+            <button class="btn text-[#08080880] rounded-lg" id="log-out"><i class="fa-solid fa-arrow-right-from-bracket -rotate-180 text-gray-600 "></i> Log Out</button>
         </div>
     </div>
     
@@ -28,12 +28,12 @@
         <p class="text-[16px] font-light text-[#08080880] mt-3">Enjoy easy and convenient financial services with us. <br> Cashout charge is low and </p>
     </div>
 
-    <div class=" min-h-[200px] grid grid-cols-3 max-w-lg lg:mx-auto p-3 gap-7 items-center rounded-b-xl bg-white">
-        <div class=" rounded-lg border-1 border-gray-400 text-center p-3 ">
+    <div class=" min-h-[200px] cursor-pointer grid grid-cols-3 max-w-lg lg:mx-auto p-3 gap-7 items-center rounded-b-xl bg-white">
+        <div id="add-btn" class=" rounded-lg border-1 border-gray-400 text-center p-3 ">
             <img src="./assets/wallet1.png" class="mx-auto " alt="">
             <h2>Add Money</h2>
         </div>
-        <div class=" rounded-lg border-1 border-gray-400 text-center p-3">
+        <div id="out-btn" class=" rounded-lg border-1 border-gray-400 text-center p-3">
             <img src="./assets/send1.png" class="mx-auto " alt="">
             <h2>Cash Out</h2>
         </div>
@@ -56,14 +56,14 @@
     </div>
     <!-- all form Section -->
     <div class="max-w-lg mx-auto p-3">
+       
+    <div id="add-money-parent">
         <h2 class="text-[18px] font-semibold mb-3">Add Money</h2>
-    
-    <div class="max-w-lg mx-auto p-2 mb-3 rounded-2xl bg-white">
         <form action="" class="bg-white p-3  rounded-2xl">
             <div class=" mb-3">
                 <label class="font-semibold" for="">Select A Bank</label> <br>
                 <select id="bank" class="select mt-3 rounded-3xl bg-[#f4f5f7] w-full">
-                    <option>Select Bank</option>
+                    <option value="" >Select Bank</option>
                     <option>Ab Bank</option>
                     <option>Ucb Bank</option>
                     <option>IFIC Bank</option>
@@ -82,11 +82,31 @@
             </div>
             <div class="mb-6" >
                 <label class="font-semibold mt-3 block" for="">Pin Number</label> 
-                <input id="pin" type="text" placeholder="enter your pin number"  class="input mt-3 rounded-3xl w-full bg-[#f4f5f7]" />
+                <input id="pin" type="text" placeholder="Enter Your Pin Number"  class="input mt-3 rounded-3xl w-full bg-[#f4f5f7]" />
             </div>
             <button  class="btn bg-[#0874f2] mt-2  text-white rounded-3xl w-full" id="add-money-btn">Add Money</button>
         </form>
     </div>
+    <div id="cash-out-parent" class="hidden">
+        <h2 class="text-[18px] font-semibold mb-3">Cash Out</h2>
+        <form action="" class="bg-white p-3  rounded-2xl">
+            <div class="mb-3">
+                <label class="font-semibold mt-4 " for="">Agent Number</label> <br>
+                 <input id="agent-num" type="text" placeholder="Enter 11 digit number" class="input mt-3 w-full rounded-3xl bg-[#f4f5f7]" />
+                
+            </div>
+            <div>
+                <label class="font-semibold " for="">Amount</label> <br>
+                <input id="cash-out-amount" type="text" placeholder="add amount to withdraw"  class="input mt-3 rounded-3xl w-full bg-[#f4f5f7]" />
+            </div>
+            <div class="mb-6" >
+                <label class="font-semibold mt-3 block" for="">Pin Number</label> 
+                <input id="pin-out" type="text" placeholder="Enter Your Pin Number"  class="input mt-3 rounded-3xl w-full bg-[#f4f5f7]" />
+            </div>
+            <button  class="btn bg-[#0874f2] mt-2  text-white rounded-3xl w-full" id="cash-out-btn">Withdraw Money</button>
+        </form>
+    </div>
+
     <script src="./home.js"></script>
 </body>
 </html>
