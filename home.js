@@ -1,4 +1,7 @@
+// dami pin
 const vaildPin = 1234;
+
+// addmoney functionality
 
 document.getElementById("add-money-btn").addEventListener("click", function(e){
     e.preventDefault();
@@ -40,12 +43,21 @@ document.getElementById("log-out").addEventListener("click", function(e){
 
 document.getElementById("add-btn").addEventListener("click",function(){
  document.getElementById('cash-out-parent').style.display = "none";
-    document.getElementById('add-money-parent').style.display = "block";
+ document.getElementById('transfer-money-parent').style.display = "none";
+ document.getElementById('add-money-parent').style.display = "block";
 })
 document.getElementById("out-btn").addEventListener("click",function(){
+    document.getElementById('transfer-money-parent').style.display = "none";
     document.getElementById('add-money-parent').style.display = "none";
-       document.getElementById('cash-out-parent').style.display = "block";
+    document.getElementById('cash-out-parent').style.display = "block";
    })
+   document.getElementById("transfer-btn").addEventListener("click",function(){
+    document.getElementById('transfer-money-parent').style.display = "block";
+    document.getElementById('add-money-parent').style.display = "none";
+    document.getElementById('cash-out-parent').style.display = "none";
+   })
+
+// Cash Out Functionality
 
 document.getElementById("cash-out-btn").addEventListener("click",function(e){
     e.preventDefault();
@@ -68,4 +80,28 @@ document.getElementById("cash-out-btn").addEventListener("click",function(e){
     const totalBalance = availablebalance - cashOutAmount;
     document.getElementById("available-bln").innerText = totalBalance;
     
+
+})
+
+// transfer Options Functionality
+
+document.getElementById("transfer-button").addEventListener('click',function(e){
+    e.preventDefault();
+
+    const userNumber = document.getElementById('trns-num').value
+    const transferAmount = parseInt(document.getElementById('transfer-amount').value)
+    const pinTransfer = parseInt(document.getElementById("pin-trns").value)
+    console.log(userNumber, transferAmount, pinTransfer);
+    
+    if(userNumber.length < 11){
+        alert("User number must be 11 digits long");
+        return;
+    }   
+    if(pinTransfer !== vaildPin){
+        alert("Invalid pin");
+        return;
+    }
+    const availablebalance = parseInt(document.getElementById("available-bln").innerText);
+    const totalBalance = availablebalance - transferAmount;
+    document.getElementById("available-bln").innerText = totalBalance;
 })
