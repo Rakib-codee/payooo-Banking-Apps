@@ -9,7 +9,7 @@ document.getElementById('loginButton').addEventListener("click",function(e){
     const pinNumberValue = document.getElementById("pin-number").value
     const pinNumberValueConverted = parseInt(pinNumberValue)
     if(mobileNumberValueConverted === mobileNumber && pinNumberValueConverted === pinNumber){
-       alert("Login Successful")    
+       window.location.href = "home.html" 
     } else {
         // console.log("Login Failed")
         alert("Invalid mobile number or PIN")
