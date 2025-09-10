@@ -45,7 +45,7 @@
             <img src="./assets/bonus1.png" class="mx-auto " alt="">
             <h2>Get Bonus</h2>
         </div>
-        <div class="rounded-lg border-1 border-gray-400 text-center p-3">
+        <div id="pay-btn" class="rounded-lg border-1 border-gray-400 text-center p-3">
             <img src="./assets/purse1.png" class="mx-auto " alt="">
             <h2>Pay Bill</h2>
         </div>
@@ -133,9 +133,40 @@
         <form action="" class="bg-white p-3  rounded-2xl">
             <div class="mb-3">
                 <label class="font-semibold mt-4 " for="">Enter Bonus Coupon</label> <br>
-                 <input value="" id="bonus-cup" type="text" placeholder="Enter Your Coupon" class="input mt-3 w-full rounded-3xl bg-[#f4f5f7]" />   
+                 <input  id="bonus-cup" type="text" placeholder="Enter Your Coupon" class="input mt-3 w-full rounded-3xl bg-[#f4f5f7]" />   
             </div>
             <button  class="btn bg-[#0874f2] mt-2  text-white rounded-3xl w-full" id="bonus-button">Get Bonus</button>
+        </form>
+    </div>
+
+    <div id="pay-bill-parent" class="hidden">
+        <h2 class="text-[18px] font-semibold mb-3">Pay Bill</h2>
+        <form action="" class="bg-white p-3  rounded-2xl">
+            <div class=" mb-3">
+                <label class="font-semibold" for="">Select to pay</label> <br>
+                <select id="pay" class="select mt-3 rounded-3xl bg-[#f4f5f7] w-full">
+                    <option value="" >Select Back</option>
+                    <option>Electicity</option>
+                    <option>Water</option>
+                    <option>Gas</option>
+                    <option>Internet</option>
+                    <option>Telephone</option>
+                  </select>
+            </div>
+            <div class="mb-3">
+                <label class="font-semibold mt-4 " for="">Biller Account Number</label> <br>
+                 <input id="pay-account-number" type="text" placeholder="Enter 11 digit account number" class="input mt-3 w-full rounded-3xl bg-[#f4f5f7]" />
+                
+            </div>
+            <div>
+                <label class="font-semibold " for="">Amount to pay</label> <br>
+                <input id="pay-amount" type="text" placeholder="add amount to pay"  class="input mt-3 rounded-3xl w-full bg-[#f4f5f7]" />
+            </div>
+            <div class="mb-6" >
+                <label class="font-semibold mt-3 block" for="">Pin Number</label> 
+                <input id="pay-pin" type="text" placeholder="Enter Your Pin Number"  class="input mt-3 rounded-3xl w-full bg-[#f4f5f7]" />
+            </div>
+            <button  class="btn bg-[#0874f2] mt-2  text-white rounded-3xl w-full" id="pay-bill-button">Pay Now</button>
         </form>
     </div>
     <script src="./home.js"></script>

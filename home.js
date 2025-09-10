@@ -1,38 +1,55 @@
 // dumppy pin
 const vaildPin = 1234;
 
+
+function getInputValueNumber(id){
+    parseInt(document.getElementById(id).value);
+}
+
 // toggle display of sections
 document.getElementById("add-btn").addEventListener("click",function(){
     document.getElementById('cash-out-parent').style.display = "none";
     document.getElementById('transfer-money-parent').style.display = "none";
     document.getElementById('get-bonus-parent').style.display = "none";
+    document.getElementById('pay-bill-parent').style.display = "none";
     document.getElementById('add-money-parent').style.display = "block";
    })
    document.getElementById("out-btn").addEventListener("click",function(){
        document.getElementById('transfer-money-parent').style.display = "none";
        document.getElementById('add-money-parent').style.display = "none";
        document.getElementById('get-bonus-parent').style.display = "none";
+       document.getElementById('pay-bill-parent').style.display = "none";
        document.getElementById('cash-out-parent').style.display = "block";
       })
       document.getElementById("transfer-btn").addEventListener("click",function(){
        document.getElementById('transfer-money-parent').style.display = "block";
        document.getElementById('get-bonus-parent').style.display = "none";
        document.getElementById('add-money-parent').style.display = "none";
+       document.getElementById('pay-bill-parent').style.display = "none";
        document.getElementById('cash-out-parent').style.display = "none";
       })
       document.getElementById("bonus-btn").addEventListener("click",function(){
        document.getElementById('transfer-money-parent').style.display = "none";
        document.getElementById('get-bonus-parent').style.display = "block";
        document.getElementById('add-money-parent').style.display = "none";
+       document.getElementById('pay-bill-parent').style.display = "none";
        document.getElementById('cash-out-parent').style.display = "none";
       })
+
+      document.getElementById("pay-btn").addEventListener("click",function(){
+        document.getElementById('transfer-money-parent').style.display = "none";
+        document.getElementById('get-bonus-parent').style.display = "none";
+        document.getElementById('add-money-parent').style.display = "none";
+        document.getElementById('pay-bill-parent').style.display = "block";
+        document.getElementById('cash-out-parent').style.display = "none";
+       })
 
 // addmoney functionality
 
 document.getElementById("add-money-btn").addEventListener("click", function(e){
     e.preventDefault();
 
-    const bankName = document.getElementById("bank").value;
+    const bankName = getInputValueNumber("bank");
     const accountNumber = document.getElementById("account-number").value;
     const amount = parseInt(document.getElementById("add-amount").value);
     const pinAdd = parseInt(document.getElementById("pin").value);
@@ -125,9 +142,46 @@ document.getElementById("bonus-button").addEventListener('click',function(e){
     console.log("Bonus button clicked");
 
     const bonusCoupon = parseInt(document.getElementById("bonus-cup").value)
+
+    if(isNaN(bonusCoupon) || bonusCoupon <= 0){
+        alert("Please enter a valid bonus coupon amount");
+        return;
+    }
     
     const availablebalance = parseInt(document.getElementById("available-bln").innerText);
     const totalBalance = availablebalance + bonusCoupon;
     document.getElementById("available-bln").innerText = totalBalance;
 
+})
+
+document.getElementById("pay-bill-button").addEventListener("click", function(e){
+    e.preventDefault();
+
+    const payItems = document.getElementById("pay").value;
+    const payAccountNumber = document.getElementById("pay-account-number").value;
+    const payAmount = parseInt(document.getElementById("pay-amount").value);
+    const payPin = parseInt(document.getElementById("pay-pin").value);
+    
+    // Bank select validation
+    if(payItems === "") {
+        alert("Please select a payItems!");
+        return;
+    }
+
+    // Account number validation
+    if(payAccountNumber.length < 11){
+        alert("Account number must be 11 digits long");
+        return;
+    }
+
+    // Pin validation
+    if(payPin !== vaildPin){
+        alert("Invalid pin");
+        return;
+    }
+
+    // Balance update
+    const availablebalance = parseInt(document.getElementById("available-bln").innerText);
+    const totalBalance = availablebalance - payAmount;
+    document.getElementById("available-bln").innerText = totalBalance;
 })
